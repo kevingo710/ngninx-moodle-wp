@@ -14,6 +14,9 @@ Clone this project
 * DigitalOcean 🛫
 * Docker 🐳
 
+![schema](./schema.png)
+
+
 
 
 ## Expressions of gratitude 🎁
