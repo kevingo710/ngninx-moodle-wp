@@ -16,15 +16,6 @@ Clone this project
 
 
 
-
-## Author ✒️
-
-_This project_
-
-* **Kevin Gracia** - *Developer* - [kevingo710](https://github.com/kevingo710)
-
-
-
 ## Expressions of gratitude 🎁
 
 * Share this project 📢
