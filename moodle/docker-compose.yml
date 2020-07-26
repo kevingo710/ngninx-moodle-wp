@@ -30,21 +30,14 @@ services:
             - LETSENCRYPT_EMAIL=kevin.gracia.tic@gmail.com
         env_file:
             - moodle_variables.env
-
- 
-
         deploy:
             replicas: 1
             restart_policy:
                 condition: any
-
- 
-
+                
 volumes:
     db-volume:
     moodleapp-data:
-
- 
 
 networks:
   default:
