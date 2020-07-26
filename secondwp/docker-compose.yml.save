@@ -1,0 +1,36 @@
+version: "3"
+
+services:
+   db_node_dina:
+     image: mysql:5.7
+     volumes:
+        - db_data:/var/lib/mysql
+     restart: always
+     environment:
+        MYSQL_ROOT_PASSWORD: somewordpress
+        MYSQL_DATABASE: wordpress
+        MYSQL_USER: wordpress
+        MYSQL_PASSWORD: wordpress
+     container_name: wp_dina_db
+
+   wordpress:
+     depends_on:
+        - db_node_domai    image: wordpress:latest
+     expose:
+        - 80
+     restart: always
+     environment:
+        VIRTUAL_HOST: kevingo.codes
+        LETSENCRYPT_HOST: kevingo.codes
+        LETSENCRYPT_EMAIL: kevingracia07@gmail.com
+        WORDPRESS_DB_HOST: db_node_domain:3306
+        WORDPRESS_DB_USER: wordpress
+        WORDPRESS_DB_PASSWORD: wordpress
+     container_name: wp_test
+volumes:
+  db_data:
+
+networks:
+  default:
+    external:
+      name: nginx-proxy

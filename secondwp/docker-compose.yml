@@ -1,0 +1,37 @@
+version: "3"
+
+services:
+   db_node_dina:
+     image: mysql:5.7
+     volumes:
+        - db_datad:/var/lib/mysql
+     restart: always
+     environment:
+        MYSQL_ROOT_PASSWORD: somewordpress
+        MYSQL_DATABASE: wordpress
+        MYSQL_USER: wordpress
+        MYSQL_PASSWORD: wordpress
+     container_name: wp_dina_dbstore
+
+   wordpress:
+     depends_on:
+        - db_node_dina
+     image: wordpress:latest
+     expose:
+        - 80
+     restart: always
+     environment:
+        VIRTUAL_HOST: store.dinasaccarola.tk
+        LETSENCRYPT_HOST: store.dinasaccarola.tk
+        LETSENCRYPT_EMAIL: kevin.gracia.tic@gmail.com
+        WORDPRESS_DB_HOST: db_node_dina:3306
+        WORDPRESS_DB_USER: wordpress
+        WORDPRESS_DB_PASSWORD: wordpress
+     container_name: wp_dinastore
+volumes:
+  db_datad:
+
+networks:
+  default:
+    external:
+      name: nginx-proxy

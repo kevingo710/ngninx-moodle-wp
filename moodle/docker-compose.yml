@@ -1,0 +1,54 @@
+version: '3'
+
+ 
+
+services:
+    dbapp:
+        image: mysql:5
+        restart: always
+        volumes:
+            - db-volume:/var/lib/mysql
+        env_file:
+            - moodle_variables.env
+        deploy:
+            replicas: 1
+            restart_policy:
+                condition: any
+    moodleapp:
+        image: jhardison/moodle:latest
+        links:
+            - dbapp:DB
+        depends_on:
+            - dbapp
+        restart: always
+        volumes:
+            - moodleapp-data:/var/moodledata
+        expose:
+            - 80
+            - 443
+        environment:
+            - VIRTUAL_HOST=moodle.dinasaccarola.tk
+            - LETSENCRYPT_HOST=moodle.dinasaccarola.tk
+            - LETSENCRYPT_EMAIL=kevin.gracia.tic@gmail.com
+        env_file:
+            - moodle_variables.env
+
+ 
+
+        deploy:
+            replicas: 1
+            restart_policy:
+                condition: any
+
+ 
+
+volumes:
+    db-volume:
+    moodleapp-data:
+
+ 
+
+networks:
+  default:
+    external:
+     name: nginx-proxy
