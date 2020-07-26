@@ -14,6 +14,8 @@ Clone this project
 * DigitalOcean 🛫
 * Docker 🐳
 
+
+
 ![schema](./schema.png)
 
 
@@ -23,6 +25,7 @@ Clone this project
 
 * Share this project 📢
 * Invite me a coffee ☕  
+* Give me a start ⭐
 
 
 
