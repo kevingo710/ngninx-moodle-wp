@@ -25,7 +25,7 @@ Clone this project
 
 * Share this project 📢
 * Invite me a coffee ☕  
-* Give me a start ⭐
+* Give me a star ⭐
 
 
 
